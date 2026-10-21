@@ -157,6 +157,22 @@ p{margin:0}
 .trabalho .legenda span{color:var(--muted);text-align:right}
 @media (prefers-reduced-motion:reduce){.trabalho img{transition:none}.trabalho:hover img{transform:none}}
 
+.autorais-cab{display:flex;flex-direction:column;gap:.4rem;margin-top:3.5rem;margin-bottom:1.5rem}
+.autorais-cab h3{font-size:1.6rem}
+.autorais-cab p{color:var(--muted);max-width:40rem}
+.autorais{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem}
+@media (max-width:900px){.autorais{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.75rem}.autorais .trabalho{flex:0 0 62%;scroll-snap-align:start}}
+
+/* cena do horizonte: o sol se põe e o O nasce */
+.cena{position:relative;height:260vh;background:#0E0B14;color:#F4F1EC}
+.cena-fixa{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid}
+.cena-fixa svg{grid-area:1/1;width:100%;height:100%;display:block}
+.cena-textos{grid-area:1/1;position:relative;display:grid;place-items:start center;padding-top:14vh;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));text-align:center;pointer-events:none}
+.cena-textos p{grid-area:1/1;margin:0;font-family:var(--display);font-weight:800;font-size:clamp(1.35rem,3.2vw,2.5rem);line-height:1.12;max-width:26ch;text-wrap:balance;transition:opacity .35s .2s,transform .35s .2s}
+.cena-textos p.off{opacity:0;transform:translateY(12px);transition:opacity .15s,transform .15s}
+.cena-dica{position:absolute;left:50%;bottom:6vh;transform:translateX(-50%);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:#ABA3B8;transition:opacity .4s}
+@media (prefers-reduced-motion:reduce){.cena{height:auto}.cena-fixa{position:relative;height:80vh}.cena-textos p{transition:none}.cena-dica{display:none}}
+
 /* visualizador */
 dialog.visor{border:0;padding:0;background:transparent;max-width:min(30rem,calc(100vw - 32px));width:100%;color:var(--fg)}
 dialog.visor::backdrop{background:rgba(8,6,12,.86)}
@@ -289,6 +305,54 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--purple)}
     </div>
   </section>
 
+  <section class="cena" id="horizonte" aria-label="A história do nome Ozvo">
+    <div class="cena-fixa">
+      <svg id="cena-svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="overflow:visible">
+        <defs>
+          <linearGradient id="ceu" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="640">
+            <stop id="ceu-a" offset="0" stop-color="#2A1550"></stop>
+            <stop id="ceu-b" offset="0.55" stop-color="#7A2E5C"></stop>
+            <stop id="ceu-c" offset="1" stop-color="#FF7A3D"></stop>
+          </linearGradient>
+          <linearGradient id="agua" gradientUnits="userSpaceOnUse" x1="0" y1="640" x2="0" y2="1000">
+            <stop id="agua-a" offset="0" stop-color="#3A1A3E"></stop>
+            <stop offset="1" stop-color="#0E0B14"></stop>
+          </linearGradient>
+          <radialGradient id="sol" cx="0.5" cy="0.45" r="0.6">
+            <stop offset="0" stop-color="#FFC08A"></stop>
+            <stop offset="0.6" stop-color="#FF8A4C"></stop>
+            <stop offset="1" stop-color="#FF6A2E"></stop>
+          </radialGradient>
+          <clipPath id="acima"><rect x="-3000" y="-3000" width="7600" height="3640"></rect></clipPath>
+        </defs>
+        <rect x="-3000" y="-3000" width="7600" height="3640" fill="url(#ceu)"></rect>
+        <g id="estrelas" opacity="0" fill="#F4F1EC">
+          <circle cx="180" cy="120" r="2.2"></circle><circle cx="420" cy="80" r="1.6"></circle><circle cx="610" cy="190" r="1.8"></circle>
+          <circle cx="1010" cy="70" r="2"></circle><circle cx="1240" cy="150" r="1.6"></circle><circle cx="1430" cy="90" r="2.2"></circle>
+          <circle cx="300" cy="300" r="1.4"></circle><circle cx="1350" cy="320" r="1.5"></circle><circle cx="860" cy="130" r="1.3"></circle>
+          <circle cx="120" cy="420" r="1.4"></circle><circle cx="1520" cy="430" r="1.6"></circle><circle cx="720" cy="40" r="1.7"></circle>
+        </g>
+        <g clip-path="url(#acima)"><circle id="sol-disco" cx="800" cy="470" r="120" fill="url(#sol)"></circle></g>
+        <rect x="-3000" y="640" width="7600" height="3360" fill="url(#agua)"></rect>
+        <g id="reflexo" fill="#FF8A4C">
+          <rect x="690" y="662" width="220" height="7" rx="3.5"></rect>
+          <rect x="720" y="690" width="160" height="6" rx="3"></rect>
+          <rect x="750" y="716" width="100" height="5" rx="2.5"></rect>
+          <rect x="775" y="740" width="50" height="4" rx="2"></rect>
+        </g>
+        <line x1="-3000" y1="640" x2="4600" y2="640" stroke="#F4F1EC" stroke-opacity="0.35" stroke-width="2"></line>
+        <path id="arco-cima" d="M670 614 A130 130 0 0 1 930 614" fill="none" stroke="#8F6BFF" stroke-width="42" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+        <path id="arco-baixo" d="M930 666 A130 130 0 0 1 670 666" fill="none" stroke="#FF7A3D" stroke-width="42" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+      </svg>
+      <div class="cena-textos">
+        <p data-cena="0">Todo fim de tarde, o sol encontra o horizonte.</p>
+        <p data-cena="1" class="off">Ele se põe. E no dia seguinte, nasce de novo.</p>
+        <p data-cena="2" class="off">É assim que o Ozvo vê cada marca: pronta para nascer de novo.</p>
+      </div>
+      <span class="cena-dica" id="cena-dica">Role para baixo</span>
+    </div>
+  </section>
+
   <section class="secao" id="como-funciona">
     <div class="wrap">
       <div class="cab">
@@ -416,6 +480,33 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--purple)}
         </button>
       </div>
       <p class="nota-pacotes">Trabalhos da ZinTech publicados com autorização. Toque em uma peça para ver todos os slides ou assistir ao vídeo.</p>
+
+      <div class="autorais-cab">
+        <h3>Projetos autorais</h3>
+        <p>Marcas fictícias criadas no estúdio para explorar estilos diferentes, do café à hamburgueria.</p>
+      </div>
+      <div class="autorais">
+        <button class="trabalho" type="button" data-obra="cafe" aria-label="Abrir projeto autoral: Café Mandacaru">
+          <span class="capa"><img src="cafe.webp" alt="Capa de carrossel da marca fictícia Café Mandacaru" loading="lazy" width="960" height="1200"></span>
+          <span class="legenda"><b>Café Mandacaru</b><span>Carrossel</span></span>
+        </button>
+        <button class="trabalho" type="button" data-obra="lirio" aria-label="Abrir projeto autoral: Studio Lírio">
+          <span class="capa"><img src="lirio.webp" alt="Post promocional da marca fictícia Studio Lírio" loading="lazy" width="960" height="1200"></span>
+          <span class="legenda"><b>Studio Lírio</b><span>Promoção</span></span>
+        </button>
+        <button class="trabalho" type="button" data-obra="brasa" aria-label="Abrir projeto autoral: Brasa Hamburgueria">
+          <span class="capa"><img src="brasa.webp" alt="Anúncio da marca fictícia Brasa Hamburgueria" loading="lazy" width="960" height="1200"></span>
+          <span class="legenda"><b>Brasa</b><span>Anúncio</span></span>
+        </button>
+        <button class="trabalho" type="button" data-obra="fit" aria-label="Abrir projeto autoral: Fit Agreste">
+          <span class="capa"><img src="fit.webp" alt="Capa de Reels da marca fictícia Fit Agreste" loading="lazy" width="960" height="1200"></span>
+          <span class="legenda"><b>Fit Agreste</b><span>Capa de Reels</span></span>
+        </button>
+        <button class="trabalho" type="button" data-obra="doce" aria-label="Abrir projeto autoral: Doce Sertão">
+          <span class="capa"><img src="doce.webp" alt="Anúncio de encomendas da marca fictícia Doce Sertão" loading="lazy" width="960" height="1200"></span>
+          <span class="legenda"><b>Doce Sertão</b><span>Campanha</span></span>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -586,6 +677,58 @@ var WHATSAPP = "5583987682113";
     $("resumo").scrollIntoView({block:"nearest"});
   });
 
+  // cena do horizonte: o progresso da rolagem move o sol e desenha o O
+  (function(){
+    var sec = $("horizonte"); if (!sec) return;
+    var reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var sol = $("sol-disco"), reflexo = $("reflexo"), estrelas = $("estrelas");
+    var cima = $("arco-cima"), baixo = $("arco-baixo"), dica = $("cena-dica");
+    var textos = sec.querySelectorAll("[data-cena]");
+    var paradas = { "ceu-a":["#2A1550","#0E0B14"], "ceu-b":["#7A2E5C","#15101E"], "ceu-c":["#FF7A3D","#2B1A35"], "agua-a":["#3A1A3E","#120D1A"] };
+    function lim(v){ return Math.max(0, Math.min(1, v)); }
+    function suave(t){ return t*t*(3-2*t); }
+    function mistura(a, b, t){
+      var x = parseInt(a.slice(1),16), y = parseInt(b.slice(1),16);
+      var r = Math.round(((x>>16)&255)*(1-t) + ((y>>16)&255)*t);
+      var g = Math.round(((x>>8)&255)*(1-t) + ((y>>8)&255)*t);
+      var bl = Math.round((x&255)*(1-t) + (y&255)*t);
+      return "rgb("+r+","+g+","+bl+")";
+    }
+    function desenha(p){
+      var s = suave(lim(p/0.55));
+      sol.setAttribute("cy", 470 + s*340);
+      reflexo.setAttribute("opacity", (1 - s).toFixed(3));
+      for (var id in paradas) { $(id).setAttribute("stop-color", mistura(paradas[id][0], paradas[id][1], s)); }
+      estrelas.setAttribute("opacity", lim((p - 0.4)/0.3).toFixed(3));
+      var l = suave(lim((p - 0.5)/0.35));
+      cima.setAttribute("stroke-dashoffset", (1 - l).toFixed(4));
+      baixo.setAttribute("stroke-dashoffset", (1 - l).toFixed(4));
+      var atual = p < 0.33 ? 0 : (p < 0.66 ? 1 : 2);
+      for (var i = 0; i < textos.length; i++) textos[i].classList.toggle("off", i !== atual);
+      dica.style.opacity = p < 0.04 ? 1 : 0;
+    }
+    if (reduz) { var sv = $("cena-svg"); if (innerWidth / innerHeight < 1) { sv.setAttribute("viewBox", "460 150 680 820"); sv.setAttribute("preserveAspectRatio", "xMidYMid meet"); } desenha(1); return; }
+    var pedido = false;
+    var svg = $("cena-svg");
+    function enquadra(){
+      var retrato = window.innerWidth / window.innerHeight < 1;
+      svg.setAttribute("viewBox", retrato ? "460 150 680 820" : "0 0 1600 1000");
+      svg.setAttribute("preserveAspectRatio", retrato ? "xMidYMid meet" : "xMidYMid slice");
+    }
+    enquadra();
+    window.addEventListener("resize", enquadra);
+    function atualiza(){
+      pedido = false;
+      var r = sec.getBoundingClientRect();
+      var total = sec.offsetHeight - window.innerHeight;
+      desenha(total > 0 ? lim(-r.top / total) : 1);
+    }
+    function agenda(){ if (!pedido) { pedido = true; requestAnimationFrame(atualiza); } }
+    window.addEventListener("scroll", agenda, {passive:true});
+    window.addEventListener("resize", agenda);
+    atualiza();
+  })();
+
   // visualizador do portfólio
   var OBRAS = {
     resposta:{titulo:"Post para o feed · ZinTech", slides:["resposta"]},
@@ -593,6 +736,11 @@ var WHATSAPP = "5583987682113";
     sinais:{titulo:"Carrossel · ZinTech", slides:["sinais-0","sinais-1","sinais-2","sinais-3","sinais-4"]},
     professor:{titulo:"Data comemorativa · ZinTech", slides:["professor"]},
     barro:{titulo:"Identidade visual · Projeto conceitual", slides:["barro"]},
+    cafe:{titulo:"Café Mandacaru · marca fictícia", slides:["cafe"]},
+    lirio:{titulo:"Studio Lírio · marca fictícia", slides:["lirio"]},
+    brasa:{titulo:"Brasa · marca fictícia", slides:["brasa"]},
+    fit:{titulo:"Fit Agreste · marca fictícia", slides:["fit"]},
+    doce:{titulo:"Doce Sertão · marca fictícia", slides:["doce"]},
     painel:{titulo:"Reels · ZinTech", video:"painel.mp4"}
   };
   var visor = $("visor"), atual = null, idx = 0;
