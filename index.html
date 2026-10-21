@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Ozvo Estúdio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Ozvo: posts, carrosséis, Reels e identidade visual sob medida. Escolha o pacote, envie o briefing e receba tudo pronto, sem reunião e sem ligação.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Onest:wght@400;500;600&display=swap">
+<style>
+/* Layout: uma coluna larga, seções marcadas pela "linha do horizonte" do símbolo (roxo em cima, laranja embaixo). Escuro é o tema da marca. */
+:root{
+  --bg:#0E0B14; --surface:#17121F; --surface-2:#1F1829; --line:#2B2338;
+  --fg:#F4F1EC; --muted:#ABA3B8; --purple:#8F6BFF; --ocaso:#FF7A3D;
+  --btn:#F4F1EC; --btn-fg:#0E0B14; --focus:#FF9A66;
+  --display:"Syne","Arial Black",system-ui,sans-serif;
+  --body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#F4F1EC; --surface:#FFFFFF; --surface-2:#EDE8E0; --line:#DED7CC;
+    --fg:#15111C; --muted:#5C5468; --purple:#6D3BF5; --ocaso:#E8622A;
+    --btn:#15111C; --btn-fg:#F4F1EC; --focus:#6D3BF5; color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#F4F1EC; --surface:#FFFFFF; --surface-2:#EDE8E0; --line:#DED7CC;
+  --fg:#15111C; --muted:#5C5468; --purple:#6D3BF5; --ocaso:#E8622A;
+  --btn:#15111C; --btn-fg:#F4F1EC; --focus:#6D3BF5; color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-0.01em}
+p{margin:0}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:72rem;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* horizonte: a assinatura visual */
+.horizonte{display:inline-flex;flex-direction:column;gap:3px;width:2.25rem}
+.horizonte i{display:block;height:3px;border-radius:2px}
+.horizonte i:first-child{background:var(--purple)}
+.horizonte i:last-child{background:var(--ocaso)}
+.olho{display:flex;align-items:center;gap:.75rem;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* topo */
+.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topo .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.85rem}
+.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.marca svg{width:30px;height:30px;flex:none}
+.marca span{font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:.06em}
+.topo nav{display:flex;align-items:center;gap:1.5rem}
+.topo nav a{text-decoration:none;font-size:.95rem;color:var(--muted)}
+.topo nav a:hover{color:var(--fg)}
+@media (max-width:820px){.topo nav a.link{display:none}}
+
+.botao{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:.75rem 1.4rem;border-radius:999px;font:600 1rem/1 var(--body);text-decoration:none;cursor:pointer;border:1.5px solid var(--btn);background:var(--btn);color:var(--btn-fg);transition:transform .15s}
+.botao:hover{transform:translateY(-1px)}
+.botao.contorno{background:transparent;color:var(--fg);border-color:var(--line)}
+.botao.contorno:hover{border-color:var(--fg)}
+.botao.pequeno{min-height:44px;padding:.6rem 1.1rem;font-size:.95rem}
+@media (prefers-reduced-motion:reduce){.botao{transition:none}.botao:hover{transform:none}}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:3rem;align-items:center;padding-block:4.5rem 4rem}
+.hero .texto{display:flex;flex-direction:column;gap:1.6rem;min-width:0}
+.hero h1{font-size:clamp(2.6rem,6.4vw,5.2rem)}
+.hero h1 em{font-style:normal;color:var(--ocaso)}
+.hero .sub{font-size:1.15rem;color:var(--muted);max-width:34rem}
+.hero .acoes{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero .garantias{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;font-size:.92rem;color:var(--muted);list-style:none;margin:0;padding:0}
+.hero .garantias li{display:flex;align-items:center;gap:.45rem}
+.hero .garantias svg{width:16px;height:16px;flex:none;color:var(--ocaso)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr);padding-block:3rem}}
+
+/* formatos (mock de peças) */
+.formatos{display:flex;align-items:flex-end;justify-content:center;gap:1rem}
+.peca{display:flex;flex-direction:column;gap:.5rem;flex:none}
+.peca .quadro{border-radius:14px;background:var(--surface);border:1px solid var(--line);overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:.9rem;gap:.4rem}
+.peca .rotulo{font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.peca .rotulo b{color:var(--fg);font-weight:600}
+.story .quadro{width:9.5rem;aspect-ratio:9/16;max-width:100%}
+.feed .quadro{width:11rem;aspect-ratio:4/5;max-width:100%}
+.reels .quadro{width:7.5rem;aspect-ratio:9/16;max-width:100%}
+.sol{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);width:58%;aspect-ratio:1}
+.linha-txt{height:7px;border-radius:4px;background:var(--surface-2)}
+.titulo-txt{font-family:var(--display);font-weight:800;font-size:1.05rem;line-height:1.05}
+.play{position:absolute;inset:0;display:grid;place-items:center}
+.play span{width:42px;height:42px;border-radius:50%;background:var(--fg);color:var(--bg);display:grid;place-items:center}
+.feed .quadro{background:linear-gradient(180deg,var(--surface) 0 52%,var(--surface-2) 52%)}
+@media (max-width:520px){.story .quadro{width:7.2rem}.feed .quadro{width:8.6rem}.reels .quadro{width:5.8rem}.formatos{gap:.6rem}}
+
+/* seções */
+.secao{padding-block:5rem;border-top:1px solid var(--line)}
+.secao .cab{display:flex;flex-direction:column;gap:1rem;max-width:44rem;margin-bottom:2.75rem}
+.secao h2{font-size:clamp(2rem,4.4vw,3.2rem)}
+.secao .cab p{color:var(--muted);font-size:1.08rem}
+@media (max-width:600px){.secao{padding-block:3.5rem}}
+
+/* como funciona */
+.passos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;counter-reset:p}
+.passos li{display:flex;flex-direction:column;gap:.6rem;padding-top:1.25rem;border-top:2px solid var(--line);counter-increment:p;min-width:0}
+.passos li::before{content:counter(p);font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;color:var(--purple)}
+.passos li:last-child::before{color:var(--ocaso)}
+.passos h3{font-size:1.3rem}
+.passos p{color:var(--muted);font-size:.98rem}
+@media (max-width:900px){.passos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.passos{grid-template-columns:minmax(0,1fr)}}
+
+/* pacotes */
+.pacotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;align-items:stretch}
+.pacote{display:flex;flex-direction:column;gap:1.4rem;padding:2rem 1.75rem;border-radius:22px;background:var(--surface);border:1px solid var(--line);min-width:0}
+.pacote.destaque{border:2px solid var(--purple);position:relative}
+.selo{position:absolute;top:-.85rem;left:1.75rem;background:var(--purple);color:#FFFFFF;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .75rem;border-radius:999px}
+.pacote h3{font-size:1.6rem}
+.pacote .para{color:var(--muted);font-size:.95rem;margin-top:.35rem}
+.preco{display:flex;align-items:baseline;gap:.4rem;font-variant-numeric:tabular-nums}
+.preco strong{font-family:var(--display);font-weight:800;font-size:2.6rem;line-height:1}
+.preco span{color:var(--muted);font-size:.95rem}
+.inclui{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem;flex-grow:1}
+.inclui li{display:grid;grid-template-columns:1.1rem minmax(0,1fr);gap:.6rem;font-size:.98rem}
+.inclui svg{width:16px;height:16px;margin-top:.3rem;color:var(--ocaso)}
+.inclui small{display:block;color:var(--muted);font-size:.82rem;font-variant-numeric:tabular-nums}
+.pacote .botao{width:100%}
+.pacote:not(.destaque) .botao{background:transparent;color:var(--fg);border-color:var(--line)}
+.pacote:not(.destaque) .botao:hover{border-color:var(--fg)}
+.nota-pacotes{margin-top:1.5rem;color:var(--muted);font-size:.95rem}
+@media (max-width:900px){.pacotes{grid-template-columns:minmax(0,1fr)}}
+
+/* avulsos */
+.avulsos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 3rem}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.25rem 1rem;align-items:baseline;padding-block:1.15rem;border-bottom:1px solid var(--line)}
+.item h3{font-family:var(--body);font-weight:600;font-size:1.08rem;line-height:1.3}
+.item .valor{font-family:var(--display);font-weight:700;font-size:1.25rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.item p{grid-column:1/-1;color:var(--muted);font-size:.92rem}
+@media (max-width:760px){.avulsos{grid-template-columns:minmax(0,1fr)}}
+
+/* portfólio */
+.grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.trabalho{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:.75rem;min-width:0}
+.trabalho:focus-visible{outline:3px solid var(--focus);outline-offset:4px;border-radius:18px}
+.trabalho .capa{position:relative;display:block;aspect-ratio:4/5;max-width:100%;border-radius:18px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+.trabalho img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.trabalho:hover img{transform:scale(1.03)}
+.marca-tipo{position:absolute;right:.7rem;top:.7rem;background:rgba(14,11,20,.78);color:#F4F1EC;font-size:.75rem;font-weight:600;padding:.3rem .6rem;border-radius:999px;letter-spacing:.02em}
+.trabalho .legenda{display:flex;justify-content:space-between;align-items:baseline;gap:.75rem;font-size:.92rem}
+.trabalho .legenda b{font-weight:600}
+.trabalho .legenda span{color:var(--muted);text-align:right}
+@media (prefers-reduced-motion:reduce){.trabalho img{transition:none}.trabalho:hover img{transform:none}}
+
+/* visualizador */
+dialog.visor{border:0;padding:0;background:transparent;max-width:min(30rem,calc(100vw - 32px));width:100%;color:var(--fg)}
+dialog.visor::backdrop{background:rgba(8,6,12,.86)}
+.visor .caixa{display:flex;flex-direction:column;gap:.9rem}
+.visor .midia{position:relative;border-radius:18px;overflow:hidden;background:#000;display:grid;place-items:center}
+.visor .midia img,.visor .midia video{display:block;width:100%;max-height:78vh;object-fit:contain}
+.visor .barra-visor{display:flex;align-items:center;justify-content:space-between;gap:.75rem;color:#F4F1EC}
+.visor .titulo-visor{font-weight:600;font-size:.95rem}
+.visor .controles{display:flex;align-items:center;gap:.5rem}
+.visor .controles button{all:unset;cursor:pointer;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(244,241,236,.12);color:#F4F1EC}
+.visor .controles button:hover{background:rgba(244,241,236,.22)}
+.visor .controles button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.visor .controles button[disabled]{opacity:.35;cursor:default}
+.visor .contador{font-variant-numeric:tabular-nums;font-size:.9rem;min-width:3.2rem;text-align:center;color:#ABA3B8}
+@media (max-width:760px){.grade{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* sobre */
+.sobre .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:3rem;align-items:start}
+.sobre .corpo{display:flex;flex-direction:column;gap:1.1rem;max-width:38rem}
+.sobre .corpo p{color:var(--muted)}
+.sobre .corpo p strong{color:var(--fg);font-weight:600}
+@media (max-width:860px){.sobre .wrap{grid-template-columns:minmax(0,1fr);gap:1.5rem}}
+
+/* dúvidas */
+.duvidas{display:flex;flex-direction:column;max-width:48rem}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:1.2rem;font-weight:600;font-size:1.08rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--display);font-size:1.6rem;line-height:1;color:var(--ocaso);flex:none}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);padding-bottom:1.25rem;max-width:42rem}
+
+/* pedido */
+.pedido .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:3rem;align-items:start}
+.pedido .lado{display:flex;flex-direction:column;gap:1.25rem;position:sticky;top:6rem}
+.pedido .lado p{color:var(--muted)}
+.contato{display:flex;flex-direction:column;gap:.35rem;padding:1.25rem;border-radius:16px;background:var(--surface);border:1px solid var(--line);font-size:.95rem}
+.contato span{color:var(--muted)}
+form{display:flex;flex-direction:column;gap:1.25rem;padding:2rem;border-radius:22px;background:var(--surface);border:1px solid var(--line);min-width:0}
+.campos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
+.campo{display:flex;flex-direction:column;gap:.45rem;min-width:0}
+.campo.cheio{grid-column:1/-1}
+label{font-weight:600;font-size:.95rem}
+label small{font-weight:400;color:var(--muted)}
+input,select,textarea{font:inherit;font-size:1rem;color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:.8rem .9rem;min-height:48px;width:100%}
+textarea{min-height:7rem;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--purple)}
+.aceite{display:grid;grid-template-columns:1.25rem minmax(0,1fr);gap:.75rem;align-items:start;font-size:.95rem;color:var(--muted)}
+.aceite input{min-height:auto;width:1.25rem;height:1.25rem;margin-top:.15rem;accent-color:var(--purple)}
+.erro{color:var(--ocaso);font-size:.95rem;font-weight:500}
+.resumo{display:flex;flex-direction:column;gap:1rem;padding:1.5rem;border-radius:16px;background:var(--bg);border:1.5px solid var(--purple)}
+.resumo h3{font-size:1.3rem}
+.resumo pre{margin:0;white-space:pre-wrap;word-break:break-word;font:inherit;font-size:.92rem;color:var(--muted);max-height:16rem;overflow:auto}
+.resumo .acoes{display:flex;flex-wrap:wrap;gap:.75rem}
+@media (max-width:860px){.pedido .wrap{grid-template-columns:minmax(0,1fr)}.pedido .lado{position:static}}
+@media (max-width:560px){.campos{grid-template-columns:minmax(0,1fr)}form{padding:1.25rem}}
+
+/* rodapé */
+.rodape{border-top:1px solid var(--line);padding-block:2.5rem 3rem}
+.rodape .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem 2rem;color:var(--muted);font-size:.92rem}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="simbolo" viewBox="8 2 104 116">
+      <path d="M16 54 A44 44 0 0 1 104 54" fill="none" stroke="var(--purple)" stroke-width="14"></path>
+      <path d="M104 66 A44 44 0 0 1 16 66" fill="none" stroke="var(--ocaso)" stroke-width="14"></path>
+    </symbol>
+    <symbol id="ok" viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+  </defs>
+</svg>
+
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Ozvo, início">
+      <svg aria-hidden="true"><use href="#simbolo"></use></svg>
+      <span>OZVO</span>
+    </a>
+    <nav aria-label="Seções">
+      <a class="link" href="#como-funciona">Como funciona</a>
+      <a class="link" href="#pacotes">Pacotes</a>
+      <a class="link" href="#portfolio">Portfólio</a>
+      <a class="link" href="#duvidas">Dúvidas</a>
+      <a class="botao pequeno" href="#pedido">Fazer pedido</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap">
+      <div class="texto">
+        <div class="olho"><span class="horizonte" aria-hidden="true"><i></i><i></i></span>Estúdio de design, vídeo e conteúdo</div>
+        <h1>Conteúdo que faz sua marca ser <em>lembrada.</em></h1>
+        <p class="sub">Posts, carrosséis, Reels e identidade visual feitos sob medida. Você escolhe o pacote, envia o briefing e recebe tudo pronto para postar.</p>
+        <div class="acoes">
+          <a class="botao" href="#pacotes">Ver pacotes e preços</a>
+          <a class="botao contorno" href="#portfolio">Ver portfólio</a>
+        </div>
+        <ul class="garantias">
+          <li><svg aria-hidden="true"><use href="#ok"></use></svg>Sem reunião, sem ligação</li>
+          <li><svg aria-hidden="true"><use href="#ok"></use></svg>2 ajustes inclusos</li>
+          <li><svg aria-hidden="true"><use href="#ok"></use></svg>Atendimento para todo o Brasil</li>
+        </ul>
+      </div>
+      <div class="formatos" aria-hidden="true">
+        <div class="peca story">
+          <div class="quadro">
+            <svg class="sol"><use href="#simbolo"></use></svg>
+            <div class="titulo-txt">Nova coleção</div>
+            <div class="linha-txt" style="width:70%"></div>
+          </div>
+          <div class="rotulo"><b>Story</b> · 1080×1920</div>
+        </div>
+        <div class="peca feed">
+          <div class="quadro">
+            <div class="titulo-txt" style="font-size:1.25rem">5 sinais de que sua marca precisa de um novo visual</div>
+            <div class="linha-txt" style="width:55%"></div>
+          </div>
+          <div class="rotulo"><b>Feed</b> · 1080×1350</div>
+        </div>
+        <div class="peca reels">
+          <div class="quadro">
+            <div class="play"><span><svg width="16" height="16" viewBox="0 0 16 16"><path d="M5 3.5v9l7.5-4.5z" fill="currentColor"></path></svg></span></div>
+            <div class="linha-txt" style="width:80%"></div>
+          </div>
+          <div class="rotulo"><b>Reels</b> · até 60s</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="como-funciona">
+    <div class="wrap">
+      <div class="cab">
+        <div class="olho"><span class="horizonte" aria-hidden="true"><i></i><i></i></span>Como funciona</div>
+        <h2>Do pedido à entrega, tudo por escrito.</h2>
+        <p>Você não precisa marcar horário nem explicar tudo por telefone. O processo foi pensado para ser rápido para você e organizado do começo ao fim.</p>
+      </div>
+      <ol class="passos">
+        <li><h3>Escolha</h3><p>Veja os pacotes e os serviços avulsos com preço fixo, e escolha o que combina com o momento da sua marca.</p></li>
+        <li><h3>Briefing</h3><p>Preencha o formulário de pedido: cores, textos, o que quer divulgar e referências que você gosta.</p></li>
+        <li><h3>Pagamento</h3><p>Você recebe o link de pagamento por mensagem. Pix ou cartão. A produção começa assim que o pagamento é confirmado.</p></li>
+        <li><h3>Entrega</h3><p>As artes chegam por link, em alta qualidade, prontas para postar. Dois ajustes já estão inclusos.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="secao" id="pacotes">
+    <div class="wrap">
+      <div class="cab">
+        <div class="olho"><span class="horizonte" aria-hidden="true"><i></i><i></i></span>Pacotes mensais</div>
+        <h2>Presença constante, sem dor de cabeça.</h2>
+        <p>Conteúdo novo todo mês, com a mesma identidade visual do começo ao fim. Sem fidelidade: você renova mês a mês.</p>
+      </div>
+      <div class="pacotes">
+        <article class="pacote">
+          <div>
+            <h3>Essencial</h3>
+            <p class="para">Para quem está começando a aparecer.</p>
+          </div>
+          <div class="preco"><strong>R$ 790</strong><span>/mês</span></div>
+          <ul class="inclui">
+            <li><svg aria-hidden="true"><use href="#ok"></use></svg><span>8 posts para o feed<small>cada um com versão para story</small></span></li>
+            <li><svg aria-hidden="true"><use href="#ok"></use></svg><span>Identidade visual padronizada</span></li>
+            <li><svg aria-hidden="true"><use href="#ok"></use></svg><span>2 ajustes por peça</span></li>
+          </ul>
+          <button class="botao" type="button" data-servico="Pacote Essencial (R$ 790/mês)">Quero o Essencial</button>
+        </article>
+        <article class="pacote destaque">
+          <span class="selo">Mais escolhido</span>
+          <div>
+            <h3>Crescer</h3>
+            <p class="para">Para quem quer engajar e vender mais.</p>
+          </div>
+          <div class="preco"><strong>R$ 1.390</strong><span>/mês</span></div>
+          <ul class="inclui">
+            <li><svg aria-hidden="true"><use href="#ok"></use></svg><span>12 posts para o feed<small>4 deles em carrossel</small></span></li>
+            <li><svg aria-hidden="true"><use href="#ok"></use></svg><span>8 stories</span></li>
+            <li><svg aria-hidden="true"><use href="#ok"></use></svg><span>2 Reels editados<small>até 60s, com o seu material</small></span></li>
+            <li><svg aria-hidden="true"><use href="#ok"></use></svg><span>2 ajustes por peça</span></li>
+          </ul>
+          <button class="botao" type="button" data-servico="Pacote Crescer (R$ 1.390/mês)">Quero o Crescer</button>
+        </article>
+        <article class="pacote">
+          <div>
+            <h3>Presença</h3>
+            <p class="para">Para marcas que querem estar em todo lugar.</p>
+          </div>
+          <div class="preco"><strong>R$ 2.190</strong><span>/mês</span></div>
+          <ul class="inclui">
+            <li><svg aria-hidden="true"><use href="#ok"></use></svg><span>16 posts para o feed<small>6 deles em carrossel</small></span></li>
+            <li><svg aria-hidden="true"><use href="#ok"></use></svg><span>16 stories</span></li>
+            <li><svg aria-hidden="true"><use href="#ok"></use></svg><span>4 Reels editados<small>até 60s, com o seu material</small></span></li>
+            <li><svg aria-hidden="true"><use href="#ok"></use></svg><span>Legendas prontas para todos os posts</span></li>
+            <li><svg aria-hidden="true"><use href="#ok"></use></svg><span>2 ajustes por peça</span></li>
+          </ul>
+          <button class="botao" type="button" data-servico="Pacote Presença (R$ 2.190/mês)">Quero o Presença</button>
+        </article>
+      </div>
+      <p class="nota-pacotes">A postagem e as respostas aos comentários ficam com você. Entregamos os arquivos prontos, organizados por data.</p>
+    </div>
+  </section>
+
+  <section class="secao" id="avulsos">
+    <div class="wrap">
+      <div class="cab">
+        <div class="olho"><span class="horizonte" aria-hidden="true"><i></i><i></i></span>Serviços avulsos</div>
+        <h2>Precisa de uma peça só?</h2>
+        <p>Preço fixo, entrega em até 3 dias úteis depois do briefing e do pagamento.</p>
+      </div>
+      <div class="avulsos">
+        <div class="item"><h3>Post para o feed</h3><span class="valor">R$ 90</span><p>Inclui a versão para story.</p></div>
+        <div class="item"><h3>Carrossel</h3><span class="valor">R$ 180</span><p>Até 6 slides. Slide extra: R$ 25.</p></div>
+        <div class="item"><h3>Story avulso</h3><span class="valor">R$ 60</span><p>Formato 1080×1920.</p></div>
+        <div class="item"><h3>Edição de Reels</h3><span class="valor">R$ 150</span><p>Até 60s, com cortes, legendas e trilha. Você envia o material.</p></div>
+        <div class="item"><h3>Vídeo animado</h3><span class="valor">R$ 400</span><p>Até 30s, com animação de textos e elementos.</p></div>
+        <div class="item"><h3>Adaptação de anúncio</h3><span class="valor">R$ 60</span><p>Uma peça pronta adaptada para outros formatos.</p></div>
+        <div class="item"><h3>Logo + kit de arquivos</h3><span class="valor">R$ 690</span><p>Propostas, versões em cores e fundos, PNG e SVG.</p></div>
+        <div class="item"><h3>Ajuste extra</h3><span class="valor">R$ 20</span><p>A partir do terceiro ajuste na mesma peça.</p></div>
+      </div>
+      <div style="margin-top:2rem"><button class="botao contorno" type="button" data-servico="Serviço avulso">Pedir um serviço avulso</button></div>
+    </div>
+  </section>
+
+  <section class="secao" id="portfolio">
+    <div class="wrap">
+      <div class="cab">
+        <div class="olho"><span class="horizonte" aria-hidden="true"><i></i><i></i></span>Portfólio</div>
+        <h2>Trabalhos recentes.</h2>
+        <p>Uma seleção de posts, carrosséis, vídeos e identidades visuais.</p>
+      </div>
+      <div class="grade">
+        <button class="trabalho" type="button" data-obra="resposta" aria-label="Abrir post: Quando a resposta demora">
+          <span class="capa"><img src="resposta.webp" alt="Post da ZinTech: Quando a resposta demora, o cliente já comprou em outro lugar" loading="lazy" width="960" height="1200"></span>
+          <span class="legenda"><b>Post para o feed</b><span>ZinTech · cliente</span></span>
+        </button>
+        <button class="trabalho" type="button" data-obra="cobranca" aria-label="Abrir carrossel: Nova cobrança, 5 slides">
+          <span class="capa"><img src="cobranca-1.webp" alt="Capa do carrossel da ZinTech sobre a nova cobrança da Meta" loading="lazy" width="960" height="1200"><span class="marca-tipo">5 slides</span></span>
+          <span class="legenda"><b>Carrossel</b><span>ZinTech · cliente</span></span>
+        </button>
+        <button class="trabalho" type="button" data-obra="painel" aria-label="Abrir Reels: Seu WhatsApp vive lotado">
+          <span class="capa"><img src="painel-capa.webp" alt="Reels da ZinTech: Seu WhatsApp vive lotado?" loading="lazy" width="540" height="960" style="object-position:50% 20%"><span class="marca-tipo">Reels · 0:41</span></span>
+          <span class="legenda"><b>Vídeo animado</b><span>ZinTech · cliente</span></span>
+        </button>
+        <button class="trabalho" type="button" data-obra="sinais" aria-label="Abrir carrossel: 5 sinais, 5 slides">
+          <span class="capa"><img src="sinais-0.webp" alt="Capa do carrossel da ZinTech: 5 sinais de que sua empresa já passou do WhatsApp comum" loading="lazy" width="960" height="1200"><span class="marca-tipo">5 slides</span></span>
+          <span class="legenda"><b>Carrossel</b><span>ZinTech · cliente</span></span>
+        </button>
+        <button class="trabalho" type="button" data-obra="professor" aria-label="Abrir post: Dia do Professor">
+          <span class="capa"><img src="professor.webp" alt="Post da ZinTech para o Dia do Professor" loading="lazy" width="960" height="1200"></span>
+          <span class="legenda"><b>Data comemorativa</b><span>ZinTech · cliente</span></span>
+        </button>
+        <button class="trabalho" type="button" data-obra="barro" aria-label="Abrir identidade visual: Ateliê Barro">
+          <span class="capa"><img src="barro.webp" alt="Identidade visual do Ateliê Barro: logo, cores e tipografia" loading="lazy" width="960" height="1200"></span>
+          <span class="legenda"><b>Identidade visual</b><span>Projeto conceitual</span></span>
+        </button>
+      </div>
+      <p class="nota-pacotes">Trabalhos da ZinTech publicados com autorização. Toque em uma peça para ver todos os slides ou assistir ao vídeo.</p>
+    </div>
+  </section>
+
+  <section class="secao sobre" id="sobre">
+    <div class="wrap">
+      <div class="cab" style="margin-bottom:0">
+        <div class="olho"><span class="horizonte" aria-hidden="true"><i></i><i></i></span>Sobre</div>
+        <h2>Um estúdio pequeno, com cuidado de estúdio grande.</h2>
+      </div>
+      <div class="corpo">
+        <p>O <strong>Ozvo</strong> é o estúdio de Júnior, designer e criador de conteúdo. Cada peça passa pelas mesmas mãos, do primeiro rascunho à entrega final, e é por isso que a sua marca mantém a mesma cara em todos os posts.</p>
+        <p>O trabalho é <strong>100% online</strong>, para clientes de todo o Brasil. Toda a conversa acontece por mensagem, então você pode mandar o seu pedido na hora que for melhor para você e acompanhar tudo por escrito.</p>
+        <p>O nome vem do <strong>O partido no horizonte</strong>: a linha onde o sol se põe e nasce de novo. É assim que a gente enxerga cada marca, sempre pronta para aparecer de um jeito novo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="duvidas">
+    <div class="wrap">
+      <div class="cab">
+        <div class="olho"><span class="horizonte" aria-hidden="true"><i></i><i></i></span>Dúvidas</div>
+        <h2>Perguntas frequentes.</h2>
+      </div>
+      <div class="duvidas">
+        <details><summary>Preciso fazer reunião ou ligação?</summary><p>Não. Todo o atendimento é por mensagem, pelo WhatsApp ou por e-mail. O formulário de pedido reúne tudo o que é preciso para começar.</p></details>
+        <details><summary>Como funciona o pagamento?</summary><p>Depois do pedido, você recebe o link de pagamento por mensagem, por Pix ou cartão. Serviços avulsos são pagos antes de começar. Pacotes mensais são pagos no início de cada mês.</p></details>
+        <details><summary>Em quanto tempo recebo?</summary><p>Serviços avulsos ficam prontos em até 3 dias úteis após o briefing e o pagamento. Nos pacotes mensais, o conteúdo de cada semana é entregue com antecedência, para você programar as postagens com calma.</p></details>
+        <details><summary>E se eu quiser mudar alguma coisa?</summary><p>Cada peça inclui 2 rodadas de ajuste. A partir da terceira, cada ajuste custa R$ 20.</p></details>
+        <details><summary>Vocês postam e respondem os comentários?</summary><p>Não. Entregamos os arquivos prontos e organizados por data, e no pacote Presença também as legendas. A postagem e o contato com o seu público ficam com você.</p></details>
+        <details><summary>Tem fidelidade nos pacotes mensais?</summary><p>Não. Você renova mês a mês. Para cancelar, é só avisar por mensagem antes do próximo pagamento.</p></details>
+        <details><summary>Como recebo os arquivos?</summary><p>Por um link do Google Drive, em alta qualidade, nos formatos certos para feed, story e Reels.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao pedido" id="pedido">
+    <div class="wrap">
+      <div class="lado">
+        <div class="olho"><span class="horizonte" aria-hidden="true"><i></i><i></i></span>Fazer pedido</div>
+        <h2 style="font-size:clamp(2rem,4.4vw,3.2rem)">Conte o que você precisa.</h2>
+        <p>Preencha o briefing. No fim, o pedido fica pronto para você enviar pelo WhatsApp. A resposta chega por mensagem, com o link de pagamento.</p>
+        <div class="contato">
+          <span>Atendimento por mensagem</span>
+          <strong>Segunda a sexta, 9h às 17h</strong>
+          <span id="contato-numero">WhatsApp: +55 83 98768-2113</span>
+        </div>
+      </div>
+      <form id="form-pedido" novalidate>
+        <div class="campos">
+          <div class="campo"><label for="f-nome">Seu nome</label><input id="f-nome" name="nome" autocomplete="name" required></div>
+          <div class="campo"><label for="f-marca">Nome da marca ou empresa</label><input id="f-marca" name="marca" autocomplete="organization" required></div>
+          <div class="campo"><label for="f-contato">WhatsApp ou e-mail</label><input id="f-contato" name="contato" required></div>
+          <div class="campo"><label for="f-instagram">Instagram da marca <small>(opcional)</small></label><input id="f-instagram" name="instagram" placeholder="@suamarca"></div>
+          <div class="campo cheio"><label for="f-servico">O que você quer contratar</label>
+            <select id="f-servico" name="servico" required>
+              <option value="">Escolha uma opção</option>
+              <optgroup label="Pacotes mensais">
+                <option>Pacote Essencial (R$ 790/mês)</option>
+                <option>Pacote Crescer (R$ 1.390/mês)</option>
+                <option>Pacote Presença (R$ 2.190/mês)</option>
+              </optgroup>
+              <optgroup label="Avulsos">
+                <option>Post para o feed (R$ 90)</option>
+                <option>Carrossel (R$ 180)</option>
+                <option>Story avulso (R$ 60)</option>
+                <option>Edição de Reels (R$ 150)</option>
+                <option>Vídeo animado (R$ 400)</option>
+                <option>Adaptação de anúncio (R$ 60)</option>
+                <option>Logo + kit de arquivos (R$ 690)</option>
+                <option>Serviço avulso</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="campo cheio"><label for="f-objetivo">O que você quer divulgar ou comunicar?</label><textarea id="f-objetivo" name="objetivo" required placeholder="Ex.: lançamento da coleção de verão, promoção de 20% até o fim do mês, apresentar a loja nova."></textarea></div>
+          <div class="campo"><label for="f-cores">Cores e estilo da marca</label><input id="f-cores" name="cores" placeholder="Ex.: preto e dourado, elegante"></div>
+          <div class="campo"><label for="f-prazo">Quando você precisa?</label><input id="f-prazo" name="prazo" placeholder="Ex.: até dia 15"></div>
+          <div class="campo cheio"><label for="f-refs">Referências que você gosta <small>(links, opcional)</small></label><textarea id="f-refs" name="refs" style="min-height:4.5rem"></textarea></div>
+        </div>
+        <label class="aceite" for="f-aceite"><input type="checkbox" id="f-aceite" name="aceite" required><span>Li as regras: pagamento antes de começar, 2 ajustes inclusos por peça e atendimento só por mensagem.</span></label>
+        <p class="erro" id="erro" role="alert" hidden></p>
+        <button class="botao" type="submit">Montar meu pedido</button>
+        <div class="resumo" id="resumo" hidden>
+          <h3>Seu pedido está pronto.</h3>
+          <p style="color:var(--muted);font-size:.95rem">Envie pelo WhatsApp. Se o botão não abrir, copie o texto e mande para o número indicado.</p>
+          <pre id="resumo-texto"></pre>
+          <div class="acoes">
+            <a class="botao" id="enviar-wa" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+            <button class="botao contorno" type="button" id="copiar">Copiar pedido</button>
+          </div>
+          <p class="erro" id="aviso-copia" role="status" hidden></p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<dialog class="visor" id="visor" aria-label="Visualizar trabalho">
+  <div class="caixa">
+    <div class="barra-visor">
+      <span class="titulo-visor" id="visor-titulo"></span>
+      <div class="controles"><button type="button" id="visor-fechar" aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button></div>
+    </div>
+    <div class="midia" id="visor-midia"></div>
+    <div class="barra-visor" id="visor-nav">
+      <div class="controles"><button type="button" id="visor-ant" aria-label="Slide anterior"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div>
+      <span class="contador" id="visor-contador" aria-live="polite"></span>
+      <div class="controles"><button type="button" id="visor-prox" aria-label="Próximo slide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div>
+    </div>
+  </div>
+</dialog>
+
+<footer class="rodape">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Ozvo, voltar ao início"><svg aria-hidden="true"><use href="#simbolo"></use></svg><span>OZVO</span></a>
+    <span>ozvo.com.br · @ozvo.com.br</span>
+    <span>© 2026 Ozvo. Atendimento por mensagem.</span>
+  </div>
+</footer>
+
+<script>
+// Número do WhatsApp com DDI e DDD, só dígitos. Ex.: 5583999998888
+var WHATSAPP = "5583987682113";
+
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  if (WHATSAPP) { $("contato-numero").textContent = "WhatsApp: +" + WHATSAPP.replace(/^(\d{2})(\d{2})(\d{4,5})(\d{4})$/, "$1 $2 $3-$4"); }
+
+  // botões dos pacotes preenchem o serviço e levam ao formulário
+  document.querySelectorAll("[data-servico]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var sel = $("f-servico"), v = b.getAttribute("data-servico");
+      for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].text === v) { sel.selectedIndex = i; break; } }
+      $("pedido").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+      setTimeout(function(){ $("f-nome").focus({preventScroll:true}); }, 400);
+    });
+  });
+
+  $("form-pedido").addEventListener("submit", function(e){
+    e.preventDefault();
+    var f = e.target, erro = $("erro");
+    var faltando = [];
+    [["f-nome","seu nome"],["f-marca","o nome da marca"],["f-contato","seu WhatsApp ou e-mail"],["f-servico","o que quer contratar"],["f-objetivo","o que quer divulgar"]].forEach(function(c){
+      if (!$(c[0]).value.trim()) faltando.push(c[1]);
+    });
+    if (faltando.length) { erro.textContent = "Falta preencher: " + faltando.join(", ") + "."; erro.hidden = false; return; }
+    if (!$("f-aceite").checked) { erro.textContent = "Marque que leu as regras para continuar."; erro.hidden = false; return; }
+    erro.hidden = true;
+
+    var linhas = [
+      "*Pedido Ozvo*",
+      "Serviço: " + $("f-servico").value,
+      "Nome: " + $("f-nome").value.trim(),
+      "Marca: " + $("f-marca").value.trim(),
+      "Contato: " + $("f-contato").value.trim()
+    ];
+    if ($("f-instagram").value.trim()) linhas.push("Instagram: " + $("f-instagram").value.trim());
+    linhas.push("", "O que divulgar: " + $("f-objetivo").value.trim());
+    if ($("f-cores").value.trim()) linhas.push("Cores e estilo: " + $("f-cores").value.trim());
+    if ($("f-prazo").value.trim()) linhas.push("Prazo: " + $("f-prazo").value.trim());
+    if ($("f-refs").value.trim()) linhas.push("Referências: " + $("f-refs").value.trim());
+    var texto = linhas.join("\n");
+
+    $("resumo-texto").textContent = texto;
+    var link = $("enviar-wa");
+    if (WHATSAPP) { link.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto); link.hidden = false; }
+    else { link.hidden = true; }
+    $("resumo").hidden = false;
+    $("resumo").scrollIntoView({block:"nearest"});
+  });
+
+  // visualizador do portfólio
+  var OBRAS = {
+    resposta:{titulo:"Post para o feed · ZinTech", slides:["resposta"]},
+    cobranca:{titulo:"Carrossel · ZinTech", slides:["cobranca-1","cobranca-2","cobranca-3","cobranca-4","cobranca-5"]},
+    sinais:{titulo:"Carrossel · ZinTech", slides:["sinais-0","sinais-1","sinais-2","sinais-3","sinais-4"]},
+    professor:{titulo:"Data comemorativa · ZinTech", slides:["professor"]},
+    barro:{titulo:"Identidade visual · Projeto conceitual", slides:["barro"]},
+    painel:{titulo:"Reels · ZinTech", video:"painel.mp4"}
+  };
+  var visor = $("visor"), atual = null, idx = 0;
+  function mostrar(){
+    var midia = $("visor-midia"); midia.textContent = "";
+    if (atual.video) {
+      var v = document.createElement("video");
+      v.src = atual.video; v.controls = true; v.playsInline = true; v.preload = "metadata"; v.poster = "painel-capa.webp";
+      midia.appendChild(v); $("visor-nav").hidden = true; return;
+    }
+    var img = document.createElement("img");
+    img.src = "" + atual.slides[idx] + ".webp"; img.alt = atual.titulo + ", slide " + (idx+1);
+    midia.appendChild(img);
+    var multi = atual.slides.length > 1;
+    $("visor-nav").hidden = !multi;
+    $("visor-contador").textContent = (idx+1) + " / " + atual.slides.length;
+    $("visor-ant").disabled = idx === 0; $("visor-prox").disabled = idx === atual.slides.length - 1;
+  }
+  document.querySelectorAll("[data-obra]").forEach(function(b){
+    b.addEventListener("click", function(){
+      atual = OBRAS[b.getAttribute("data-obra")]; idx = 0;
+      $("visor-titulo").textContent = atual.titulo; mostrar();
+      if (visor.showModal) visor.showModal(); else visor.setAttribute("open","");
+    });
+  });
+  function fechar(){ var v = visor.querySelector("video"); if (v) v.pause(); if (visor.close) visor.close(); else visor.removeAttribute("open"); }
+  $("visor-fechar").addEventListener("click", fechar);
+  visor.addEventListener("click", function(e){ if (e.target === visor) fechar(); });
+  visor.addEventListener("close", function(){ var v = visor.querySelector("video"); if (v) v.pause(); });
+  $("visor-ant").addEventListener("click", function(){ if (idx > 0) { idx--; mostrar(); } });
+  $("visor-prox").addEventListener("click", function(){ if (atual.slides && idx < atual.slides.length-1) { idx++; mostrar(); } });
+  visor.addEventListener("keydown", function(e){
+    if (!atual || !atual.slides) return;
+    if (e.key === "ArrowRight") $("visor-prox").click();
+    if (e.key === "ArrowLeft") $("visor-ant").click();
+  });
+
+  $("copiar").addEventListener("click", function(){
+    var aviso = $("aviso-copia"), pre = $("resumo-texto");
+    function selecionar(){
+      var r = document.createRange(); r.selectNodeContents(pre);
+      var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      aviso.textContent = "Texto selecionado. Use Copiar no seu teclado ou no menu."; aviso.hidden = false;
+    }
+    try {
+      navigator.clipboard.writeText(pre.textContent).then(function(){
+        aviso.textContent = "Pedido copiado."; aviso.hidden = false;
+      }, selecionar);
+    } catch (err) { selecionar(); }
+  });
+})();
+</script>
+
+</html>
