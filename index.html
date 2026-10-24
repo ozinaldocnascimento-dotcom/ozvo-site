@@ -233,6 +233,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--purple)}
 /* rodapé */
 .rodape{border-top:1px solid var(--line);padding-block:2.5rem 3rem}
 .rodape .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem 2rem;color:var(--muted);font-size:.92rem}
+.rodape .legal{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem}
+.rodape .legal a{text-decoration:none;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:1px}
+.rodape .legal a:hover{color:var(--fg);border-color:var(--fg)}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -537,6 +540,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--purple)}
         <details><summary>E se eu quiser mudar alguma coisa?</summary><p>Cada peça inclui 2 rodadas de ajuste. A partir da terceira, cada ajuste custa R$ 20.</p></details>
         <details><summary>Vocês postam e respondem os comentários?</summary><p>Não. Entregamos os arquivos prontos e organizados por data, e no pacote Presença também as legendas. A postagem e o contato com o seu público ficam com você.</p></details>
         <details><summary>Tem fidelidade nos pacotes mensais?</summary><p>Não. Você renova mês a mês. Para cancelar, é só avisar por mensagem antes do próximo pagamento.</p></details>
+        <details><summary>E se eu desistir depois de pagar?</summary><p>Você tem 7 dias para desistir, como manda o Código de Defesa do Consumidor. Se eu ainda não tiver começado, devolvo tudo. Se já tiver começado, devolvo descontando a parte produzida, e te mostro o que foi feito. Os detalhes estão na <a href="legal.html#reembolso">política de reembolso</a>.</p></details>
         <details><summary>Como recebo os arquivos?</summary><p>Por um link do Google Drive, em alta qualidade, nos formatos certos para feed, story e Reels.</p></details>
       </div>
     </div>
@@ -585,7 +589,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--purple)}
           <div class="campo"><label for="f-prazo">Quando você precisa?</label><input id="f-prazo" name="prazo" placeholder="Ex.: até dia 15"></div>
           <div class="campo cheio"><label for="f-refs">Referências que você gosta <small>(links, opcional)</small></label><textarea id="f-refs" name="refs" style="min-height:4.5rem"></textarea></div>
         </div>
-        <label class="aceite" for="f-aceite"><input type="checkbox" id="f-aceite" name="aceite" required><span>Li as regras: pagamento antes de começar, 2 ajustes inclusos por peça e atendimento só por mensagem.</span></label>
+        <label class="aceite" for="f-aceite"><input type="checkbox" id="f-aceite" name="aceite" required><span>Li e aceito os <a href="legal.html#termos" target="_blank" rel="noopener">termos de serviço</a> e a <a href="legal.html#reembolso" target="_blank" rel="noopener">política de reembolso</a>: pagamento antes de começar, 2 ajustes inclusos por peça e atendimento só por mensagem.</span></label>
         <p class="erro" id="erro" role="alert" hidden></p>
         <button class="botao" type="submit">Montar meu pedido</button>
         <div class="resumo" id="resumo" hidden>
@@ -622,6 +626,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--purple)}
   <div class="wrap">
     <a class="marca" href="#inicio" aria-label="Ozvo, voltar ao início"><svg aria-hidden="true"><use href="#simbolo"></use></svg><span>OZVO</span></a>
     <span>ozvo.com.br · @ozvo.com.br</span>
+    <nav class="legal" aria-label="Informações legais">
+      <a href="legal.html#termos">Termos de serviço</a>
+      <a href="legal.html#reembolso">Reembolso e cancelamento</a>
+      <a href="legal.html#privacidade">Privacidade</a>
+    </nav>
     <span>© 2026 Ozvo. Atendimento por mensagem.</span>
   </div>
 </footer>
