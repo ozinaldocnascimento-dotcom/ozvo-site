@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Termos, reembolso e privacidade · Ozvo</title>
+<meta name="description" content="Termos de serviço, política de reembolso e cancelamento e política de privacidade do Ozvo Estúdio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Onest:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#0E0B14; --surface:#17121F; --surface-2:#1F1829; --line:#2B2338;
+  --fg:#F4F1EC; --muted:#ABA3B8; --purple:#8F6BFF; --ocaso:#FF7A3D;
+  --btn:#F4F1EC; --btn-fg:#0E0B14; --focus:#FF9A66;
+  --display:"Syne","Arial Black",system-ui,sans-serif;
+  --body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#F4F1EC; --surface:#FFFFFF; --surface-2:#EDE8E0; --line:#DED7CC;
+    --fg:#15111C; --muted:#5C5468; --purple:#6D3BF5; --ocaso:#E8622A;
+    --btn:#15111C; --btn-fg:#F4F1EC; --focus:#6D3BF5; color-scheme:light;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E0B14; --surface:#17121F; --surface-2:#1F1829; --line:#2B2338;
+  --fg:#F4F1EC; --muted:#ABA3B8; --purple:#8F6BFF; --ocaso:#FF7A3D;
+  --btn:#F4F1EC; --btn-fg:#0E0B14; --focus:#FF9A66; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.0625rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+h1,h2{font-family:var(--display);font-weight:800;line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-0.01em}
+h3{font-family:var(--body);font-weight:600;margin:0;line-height:1.3}
+p,ul,ol{margin:0}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:46rem;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.horizonte{display:inline-flex;flex-direction:column;gap:3px;width:2.25rem;vertical-align:middle}
+.horizonte i{display:block;height:3px;border-radius:2px}
+.horizonte i:first-child{background:var(--purple)}
+.horizonte i:last-child{background:var(--ocaso)}
+
+.topo{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topo .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.85rem}
+.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.marca svg{width:30px;height:30px;flex:none}
+.marca span{font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:.06em}
+.voltar{text-decoration:none;color:var(--muted);font-size:.95rem}
+.voltar:hover{color:var(--fg)}
+
+.capa{padding-block:3.5rem 2rem}
+.olho{display:flex;align-items:center;gap:.75rem;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.capa h1{font-size:clamp(2rem,6vw,2.9rem)}
+.capa .sub{color:var(--muted);margin-top:1rem}
+.indice{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.75rem;padding:0;list-style:none}
+.indice a{display:inline-block;text-decoration:none;font-size:.92rem;padding:.5rem 1rem;border:1px solid var(--line);border-radius:999px;color:var(--fg)}
+.indice a:hover{border-color:var(--fg)}
+
+.cartao-id{margin-top:2rem;padding:1.25rem 1.4rem;border:1px solid var(--line);border-radius:18px;background:var(--surface);font-size:.95rem}
+.cartao-id dl{display:grid;grid-template-columns:auto 1fr;gap:.4rem 1rem;margin:0}
+.cartao-id dt{color:var(--muted)}
+.cartao-id dd{margin:0}
+@media (max-width:520px){.cartao-id dl{grid-template-columns:1fr;gap:.1rem}.cartao-id dt{margin-top:.6rem}}
+.preencher{display:inline-block;padding:.1rem .45rem;border:1.5px dashed var(--ocaso);border-radius:6px;color:var(--ocaso);font-size:.88rem}
+
+.doc{padding-block:3rem;border-top:1px solid var(--line);scroll-margin-top:4.5rem}
+.doc > h2{font-size:clamp(1.6rem,4.4vw,2.2rem)}
+.doc .data{color:var(--muted);font-size:.9rem;margin-top:.6rem}
+.doc h3{font-size:1.08rem;margin-top:2.25rem}
+.doc h3 b{font-family:var(--display);font-weight:800;color:var(--purple);margin-right:.5rem}
+.doc p{margin-top:.75rem;color:var(--fg)}
+.doc ul,.doc ol{margin-top:.75rem;padding-left:1.25rem;display:flex;flex-direction:column;gap:.5rem}
+.doc li::marker{color:var(--ocaso)}
+.doc strong{font-weight:600}
+.destaque{margin-top:1.25rem;padding:1.1rem 1.3rem;border-left:3px solid var(--ocaso);background:var(--surface);border-radius:0 14px 14px 0}
+.destaque p{margin-top:0}
+.tabela{margin-top:1rem;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tabela div{display:grid;grid-template-columns:1fr auto;gap:.25rem 1rem;padding:.9rem 1.1rem;align-items:baseline;border-top:1px solid var(--line);font-size:.97rem}
+.tabela div:first-child{border-top:0;background:var(--surface-2);font-weight:600;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tabela b{font-family:var(--display);font-weight:700;white-space:nowrap}
+
+.rodape{border-top:1px solid var(--line);padding-block:2.5rem 3rem;margin-top:1rem}
+.rodape .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem 2rem;color:var(--muted);font-size:.92rem}
+.rodape a{text-decoration:none}
+.rodape a:hover{color:var(--fg)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="simbolo" viewBox="8 2 104 116">
+    <path d="M16 54 A44 44 0 0 1 104 54" fill="none" stroke="var(--purple)" stroke-width="14"></path>
+    <path d="M104 66 A44 44 0 0 1 16 66" fill="none" stroke="var(--ocaso)" stroke-width="14"></path>
+  </symbol>
+</svg>
+
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="index.html" aria-label="Ozvo, início"><svg aria-hidden="true"><use href="#simbolo"></use></svg><span>OZVO</span></a>
+    <a class="voltar" href="index.html">← Voltar ao site</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap capa">
+    <div class="olho"><span class="horizonte" aria-hidden="true"><i></i><i></i></span>Informações legais</div>
+    <h1>Termos, reembolso e privacidade.</h1>
+    <p class="sub">Tudo o que vale no nosso combinado, escrito em português claro. Se alguma parte ficar confusa, me pergunte por mensagem antes de contratar — prefiro explicar a deixar dúvida.</p>
+    <ul class="indice">
+      <li><a href="#termos">Termos de serviço</a></li>
+      <li><a href="#reembolso">Reembolso e cancelamento</a></li>
+      <li><a href="#privacidade">Privacidade e dados</a></li>
+    </ul>
+
+    <div class="cartao-id">
+      <dl>
+        <dt>Responsável</dt><dd>Ozinaldo Cardoso do Nascimento Júnior, que atua sob o nome <strong>Ozvo Estúdio</strong></dd>
+        <dt>CPF / CNPJ</dt><dd>120.444.134-00</dd>
+        <dt>Cidade</dt><dd>Guarabira, Paraíba, Brasil (endereço completo informado no recibo, quando solicitado)</dd>
+        <dt>Atendimento</dt><dd>WhatsApp <a href="https://wa.me/5583987682113">(83) 98768-2113</a> · Instagram <a href="https://instagram.com/ozvo.com.br">@ozvo.com.br</a></dd>
+        <dt>Site</dt><dd>ozvo.com.br</dd>
+      </dl>
+    </div>
+  </div>
+
+  <!-- ============ TERMOS ============ -->
+  <section class="doc" id="termos">
+    <div class="wrap">
+      <h2>Termos de serviço</h2>
+      <p class="data">Versão de 30 de outubro de 2026.</p>
+
+      <h3><b>1</b>O que o Ozvo faz</h3>
+      <p>O Ozvo é um estúdio de design e conteúdo digital. Eu crio posts, carrosséis, stories, roteiros e edição de Reels, identidade visual, logotipos e materiais gráficos, nos pacotes mensais e nos serviços avulsos descritos no site.</p>
+      <p>O atendimento é <strong>só por mensagem</strong>, por WhatsApp ou Instagram. Não faço ligações nem reuniões por vídeo — é o jeito de trabalho do estúdio, e está dito abertamente antes da contratação.</p>
+
+      <h3><b>2</b>Como a contratação acontece</h3>
+      <ol>
+        <li>Você envia o pedido pelo formulário do site ou por mensagem, com o briefing.</li>
+        <li>Eu confirmo o que será feito, o valor e o prazo, por escrito, na própria conversa.</li>
+        <li>Você paga.</li>
+        <li>A produção começa e a entrega acontece no prazo combinado.</li>
+      </ol>
+      <p>A conversa por mensagem com essa confirmação vale como contrato entre nós. Nada começa sem essa confirmação por escrito.</p>
+
+      <h3><b>3</b>Pagamento</h3>
+      <p>Você paga por <strong>Pix</strong> ou por <strong>cartão de crédito, em até 3 vezes sem acréscimo</strong>. O preço é o mesmo nas duas formas: o custo da maquininha é meu e não é repassado a você. A chave Pix ou o link do cartão chegam por mensagem depois que o pedido é fechado.</p>
+      <ul>
+        <li>A produção começa quando o pagamento é <strong>confirmado</strong>, o que no cartão acontece na hora da aprovação — não é preciso esperar o dinheiro ser liberado para mim.</li>
+        <li><strong>Serviços avulsos:</strong> pagamento integral antes do início da produção.</li>
+        <li><strong>Pacotes mensais:</strong> pagamento no início de cada ciclo de 30 dias, sem fidelidade e sem multa de cancelamento.</li>
+        <li>Os valores do site podem mudar, mas o valor combinado com você por escrito é o que vale para aquele pedido. Em pacote mensal, qualquer reajuste é avisado com pelo menos 30 dias de antecedência e só passa a valer no ciclo seguinte.</li>
+        <li>Se o pagamento de um ciclo mensal não for feito, a produção fica pausada até a regularização, sem perda do que já foi entregue.</li>
+      </ul>
+
+      <h3><b>4</b>Prazos</h3>
+      <p>O prazo começa a contar no primeiro dia útil depois de duas coisas acontecerem: <strong>pagamento confirmado</strong> e <strong>briefing completo</strong>, incluindo textos, fotos e logo que você precise enviar.</p>
+      <ul>
+        <li>Serviços avulsos: até 3 dias úteis, salvo prazo diferente combinado por escrito.</li>
+        <li>Pacotes mensais: as peças de cada semana são entregues com antecedência, para você programar as postagens.</li>
+        <li>Se o material que depende de você atrasar, o prazo se desloca pelo mesmo tempo. Não é multa, é só a conta do tempo.</li>
+        <li>Pedidos com urgência acima do normal podem ter taxa, sempre informada e aceita antes.</li>
+      </ul>
+
+      <h3><b>5</b>Atendimento, respostas e urgências</h3>
+      <p>O atendimento é por mensagem, de segunda a sexta. <strong>Respondo toda mensagem nova em até 24 horas úteis.</strong> Essa resposta confirma que recebi e analisei o seu pedido — não quer dizer que a produção já começou.</p>
+      <ul>
+        <li>Mandar uma ideia ou um pedido por mensagem não coloca o trabalho na fila automaticamente. A produção começa quando eu confirmo por escrito o que será feito, o valor e o prazo, e o pagamento entra.</li>
+        <li>O pacote mensal é <strong>volume de produção combinado, não disponibilidade o dia inteiro</strong>. Não existe plantão, resposta imediata fora do horário nem acompanhamento em tempo real.</li>
+        <li>Alguns dias ficam reservados só para produzir. Nesses dias eu respondo mais devagar, de propósito: é assim que o que já está combinado sai no prazo.</li>
+        <li><strong>Urgência não é automática.</strong> Se você precisa de algo para o mesmo dia ou fora da fila, me diga. Se der para encaixar, eu informo o valor adicional antes de começar. Se não der, eu digo na hora, sem enrolar.</li>
+        <li>Se eu precisar ficar indisponível por alguns dias, aviso antes e mantenho de pé tudo o que já estava combinado.</li>
+      </ul>
+
+      <h3><b>6</b>Ajustes e aprovação</h3>
+      <ul>
+        <li>Cada peça inclui <strong>2 rodadas de ajuste</strong>. A partir da terceira, cada ajuste custa R$ 20.</li>
+        <li>Ajuste é refino do que foi pedido no briefing: trocar cor, corrigir texto, mudar foto, mexer no enquadramento. <strong>Mudar o conceito</strong> depois da entrega — outro tema, outra campanha, outro produto — é peça nova e tem orçamento próprio.</li>
+        <li>Peça o ajuste em até <strong>7 dias corridos</strong> depois da entrega. Depois disso a peça é considerada aprovada e novos pedidos entram como ajuste extra.</li>
+        <li>Se você não responder por 15 dias corridos depois de uma entrega, considero o trabalho entregue e aprovado, e o pedido encerrado.</li>
+      </ul>
+
+      <h3><b>7</b>Direitos de uso do que eu crio</h3>
+      <p>Pago o pedido, <strong>você pode usar as peças para sempre e sem limite</strong>, em qualquer canal da sua marca, inclusive em anúncios pagos e materiais impressos. Essa licença de uso é sua e não tem prazo de validade.</p>
+      <p>A autoria do trabalho continua minha, como manda a lei de direito autoral. Em termos práticos isso significa duas coisas:</p>
+      <ul>
+        <li>Eu posso mostrar o trabalho no meu portfólio, no site e nas redes do estúdio. Se você preferir que não, me avise por mensagem antes ou depois da entrega e eu respeito, sem custo nenhum.</li>
+        <li>Revender as peças como se fossem um produto seu, ou repassá-las para outra marca usar, não está incluído. Se precisar disso, me chame e a gente combina à parte.</li>
+      </ul>
+      <p>Arquivos abertos e editáveis (como o projeto do Figma, do Illustrator ou do editor de vídeo) não fazem parte da entrega padrão — a entrega é o arquivo final pronto para publicar. Se você quiser os abertos, dá para incluir com valor combinado antes.</p>
+
+      <h3><b>8</b>O material que você me envia</h3>
+      <p>Ao mandar fotos, logos, textos, músicas ou vídeos, você afirma que tem o direito de usar aquilo. Se aparecer reclamação de terceiro sobre esse material, a responsabilidade é de quem enviou. Eu uso fontes e imagens com licença válida para uso comercial, e aviso quando alguma peça depende de uma licença que fica no seu nome.</p>
+
+      <h3><b>9</b>O que não está incluso</h3>
+      <ul>
+        <li>Publicar as peças nas suas redes, responder comentários e mensagens do seu público.</li>
+        <li>Gestão de anúncios, verba de tráfego pago e impulsionamento.</li>
+        <li>Criação ou administração de sites, lojas e sistemas, salvo orçamento específico.</li>
+        <li>Fotografia e filmagem presenciais.</li>
+        <li>Plantão, disponibilidade integral e atendimento em tempo real.</li>
+      </ul>
+
+      <h3><b>10</b>O que eu garanto e o que não garanto</h3>
+      <p>Garanto o trabalho: a peça entregue no prazo, no formato certo, com acabamento profissional, e corrijo sem custo qualquer erro meu — texto trocado, exportação errada, arquivo corrompido.</p>
+      <div class="destaque">
+        <p>Não garanto resultado de alcance, seguidores, engajamento ou vendas. Isso depende de algoritmo, mercado, preço, atendimento e muita coisa que não passa pela minha mesa. Quem prometer número certo está vendendo o que não pode entregar.</p>
+      </div>
+
+      <h3><b>11</b>Conduta e recusa de trabalho</h3>
+      <p>Posso recusar ou interromper um pedido, devolvendo o valor da parte não executada, em casos de: conteúdo ilegal, enganoso ou que incite violência ou discriminação; pedido para copiar a identidade visual de outra marca; e ofensa ou desrespeito no atendimento. São casos raros, mas é melhor estarem escritos.</p>
+
+      <h3><b>12</b>Cancelamento</h3>
+      <p>As regras de cancelamento e devolução estão na <a href="#reembolso">política de reembolso e cancelamento</a>, que faz parte destes termos.</p>
+
+      <h3><b>13</b>Mudanças nestes termos</h3>
+      <p>Posso atualizar este texto. Vale sempre a versão publicada no dia da sua contratação, e a data fica no começo de cada documento. Mudança que afete um pedido em andamento só vale se você concordar por escrito.</p>
+
+      <h3><b>14</b>Lei aplicável</h3>
+      <p>Valem as leis brasileiras, incluindo o Código de Defesa do Consumidor (Lei 8.078/1990) e a Lei Geral de Proteção de Dados (Lei 13.709/2018). Para resolver qualquer impasse, a primeira tentativa é sempre a conversa direta por mensagem. Não dando certo, fica eleito o foro da comarca de Guarabira, na Paraíba, sem prejuízo do seu direito de acionar o foro do seu domicílio, quando a lei permitir.</p>
+    </div>
+  </section>
+
+  <!-- ============ REEMBOLSO ============ -->
+  <section class="doc" id="reembolso">
+    <div class="wrap">
+      <h2>Política de reembolso e cancelamento</h2>
+      <p class="data">Versão de 24 de outubro de 2026.</p>
+
+      <h3><b>1</b>Direito de arrependimento: 7 dias</h3>
+      <p>Como a contratação acontece pela internet, o Código de Defesa do Consumidor (artigo 49) te dá <strong>7 dias corridos</strong> para desistir, contados do pagamento. Basta avisar por mensagem, sem precisar explicar o motivo.</p>
+      <ul>
+        <li>Se a produção <strong>ainda não começou</strong>: devolvo <strong>100%</strong> do valor.</li>
+        <li>Se a produção <strong>já começou</strong> a seu pedido: devolvo o valor descontada a parte já produzida, e te mostro o que foi feito. Como é trabalho feito sob medida para a sua marca, essa parte não dá para reaproveitar com outro cliente.</li>
+      </ul>
+
+      <h3><b>2</b>Serviços avulsos</h3>
+      <div class="tabela">
+        <div><span>Quando você cancela</span><b>Devolução</b></div>
+        <div><span>Antes de eu começar a produzir</span><b>100%</b></div>
+        <div><span>Produção começada, antes da primeira entrega</span><b>50%</b></div>
+        <div><span>Depois da primeira entrega</span><b>sem devolução</b></div>
+      </div>
+      <p>Depois da primeira entrega não há devolução, mas as <strong>2 rodadas de ajuste continuam valendo</strong> e eu termino o trabalho até ficar de acordo com o briefing aprovado. Se houver erro meu, conserto sem custo e sem contar como ajuste.</p>
+
+      <h3><b>3</b>Pacotes mensais</h3>
+      <ul>
+        <li><strong>Sem fidelidade e sem multa.</strong> Para cancelar, avise por mensagem antes da próxima cobrança: o ciclo atual segue até o fim e não há renovação.</li>
+        <li>Se você cancelar no meio de um ciclo já pago e <strong>menos da metade</strong> das peças tiver sido entregue, devolvo o valor proporcional às peças que não vou produzir.</li>
+        <li>Se <strong>metade ou mais</strong> já tiver sido entregue, o ciclo não é devolvido — mas eu entrego o restante das peças daquele mês, se você quiser.</li>
+        <li>Pausa também é opção: dá para pausar um ciclo por até 30 dias, mantendo o valor contratado, sem perder nada.</li>
+      </ul>
+
+      <h3><b>4</b>Quando a falha é minha</h3>
+      <div class="destaque">
+        <p>Se eu atrasar por minha culpa, desaparecer ou entregar algo fora do que foi combinado e não resolver, você escolhe: <strong>devolução integral</strong> do valor daquele pedido, refazer o trabalho sem custo, ou abatimento proporcional no preço. É o artigo 20 do Código de Defesa do Consumidor, e eu cumpro sem discussão.</p>
+      </div>
+
+      <h3><b>5</b>Quando não há devolução</h3>
+      <ul>
+        <li>Peça já aprovada por você, entregue e publicada.</li>
+        <li>Mudança de ideia sobre o conceito depois da entrega final — nesse caso é peça nova, com orçamento novo.</li>
+        <li>Pedido parado porque o material que depende de você nunca chegou, depois de eu cobrar por mensagem e passarem 30 dias sem resposta. Nesse caso o valor fica como crédito para usar em até 6 meses, no lugar da devolução.</li>
+        <li>Resultado de alcance, seguidores ou vendas abaixo do esperado, já que isso não é prometido em nenhum momento.</li>
+      </ul>
+
+      <h3><b>6</b>Como pedir e em quanto tempo você recebe</h3>
+      <ol>
+        <li>Mande mensagem no WhatsApp <a href="https://wa.me/5583987682113">(83) 98768-2113</a> dizendo que quer cancelar. Não precisa de formulário nem de ligação.</li>
+        <li>Eu respondo em até <strong>2 dias úteis</strong> confirmando o valor da devolução e a conta de como cheguei nele.</li>
+        <li>A devolução sai em até <strong>10 dias úteis</strong> depois dessa confirmação.</li>
+      </ol>
+      <p>A devolução é feita pelo mesmo meio do pagamento, sempre que possível: Pix volta por Pix, cartão volta como estorno na fatura. No cartão, o prazo de aparecer na fatura é do banco e pode levar um ou dois ciclos — essa parte não está na minha mão. Nenhuma taxa de intermediação da plataforma de pagamento é descontada de você: esse custo é meu.</p>
+
+      <h3><b>7</b>Se não nos entendermos</h3>
+      <p>Se você achar que a devolução foi calculada errado, me diga e eu reavalio. Você também pode registrar reclamação no Procon do seu município ou no portal <a href="https://www.consumidor.gov.br" target="_blank" rel="noopener">consumidor.gov.br</a>, e eu respondo por lá do mesmo jeito.</p>
+    </div>
+  </section>
+
+  <!-- ============ PRIVACIDADE ============ -->
+  <section class="doc" id="privacidade">
+    <div class="wrap">
+      <h2>Política de privacidade</h2>
+      <p class="data">Versão de 24 de outubro de 2026.</p>
+
+      <p>Esta política explica o que eu faço com os seus dados, conforme a Lei Geral de Proteção de Dados (Lei 13.709/2018). O controlador dos dados é <strong>Ozinaldo Cardoso do Nascimento Júnior (Ozvo Estúdio)</strong>, e o canal para qualquer assunto de dados é o WhatsApp <a href="https://wa.me/5583987682113">(83) 98768-2113</a>.</p>
+
+      <h3><b>1</b>Este site não coleta nada sozinho</h3>
+      <div class="destaque">
+        <p>O ozvo.com.br não tem cadastro, login, cookie de rastreamento, pixel de anúncio nem ferramenta de análise de visitantes. O formulário de pedido <strong>monta o texto dentro do seu próprio navegador</strong> e abre o WhatsApp com ele pronto — nada é gravado em servidor meu, e eu só recebo o que você decidir enviar na conversa.</p>
+      </div>
+
+      <h3><b>2</b>Que dados eu recebo e para quê</h3>
+      <ul>
+        <li><strong>No contato e no briefing:</strong> seu nome, nome da marca, telefone ou e-mail, @ do Instagram e as informações do projeto. Uso para atender, produzir e entregar o trabalho. Base legal: execução do contrato.</li>
+        <li><strong>Material do projeto:</strong> fotos, logos, textos e vídeos que você envia. Uso apenas para produzir as suas peças. Base legal: execução do contrato.</li>
+        <li><strong>Dados de cobrança:</strong> ao pagar, você informa os dados na plataforma de pagamento. Eu recebo apenas a confirmação e o seu nome na transação. <strong>Nunca vejo nem guardo número de cartão.</strong> Base legal: execução do contrato e obrigação legal.</li>
+        <li><strong>Registro fiscal:</strong> nome e CPF ou CNPJ, quando houver emissão de recibo ou nota. Base legal: obrigação legal.</li>
+      </ul>
+      <p>Não peço e não quero dados sensíveis — saúde, religião, opinião política, biometria. Se vierem junto de algum material, uso somente para a peça e apago depois.</p>
+
+      <h3><b>3</b>Quem mais tem acesso</h3>
+      <p>Não vendo e não troco seus dados com ninguém. Eles passam apenas por serviços necessários para o trabalho existir:</p>
+      <ul>
+        <li><strong>Vercel</strong> (hospedagem do site): registra acessos e endereço de IP, como qualquer servidor web, por segurança.</li>
+        <li><strong>Google Fonts</strong>: as fontes do site são carregadas de um servidor do Google, que recebe o IP dessa requisição.</li>
+        <li><strong>WhatsApp / Meta e Instagram</strong>: a conversa acontece lá e segue as políticas deles.</li>
+        <li><strong>Google Drive</strong>: usado para te entregar os arquivos por link.</li>
+        <li><strong>Plataforma de pagamento</strong>: processa a cobrança e guarda os dados financeiros, sob as regras dela.</li>
+      </ul>
+      <p>Alguns desses serviços ficam fora do Brasil, o que a LGPD permite para a execução do contrato.</p>
+
+      <h3><b>4</b>Por quanto tempo eu guardo</h3>
+      <ul>
+        <li>Conversas e briefings: enquanto durar o atendimento e por até 2 anos depois, para consulta e histórico.</li>
+        <li>Arquivos do projeto: por até 1 ano depois da entrega, para você poder pedir de novo se perder.</li>
+        <li>Registros de pagamento e fiscais: 5 anos, por exigência legal.</li>
+      </ul>
+
+      <h3><b>5</b>Os seus direitos</h3>
+      <p>Pela LGPD você pode, a qualquer momento, pedir: confirmação de que eu tenho dados seus; acesso a eles; correção do que estiver errado; anonimização, bloqueio ou <strong>eliminação</strong>; portabilidade; informação sobre com quem compartilhei; e revogação do consentimento.</p>
+      <p>Para exercer qualquer um deles, mande mensagem no WhatsApp <a href="https://wa.me/5583987682113">(83) 98768-2113</a>. Respondo em até <strong>15 dias</strong>. É de graça. A única coisa que eu não posso apagar antes do prazo é o que a lei fiscal me obriga a guardar.</p>
+
+      <h3><b>6</b>Segurança</h3>
+      <p>Mantenho os arquivos em contas com senha forte e verificação em duas etapas, e os links de entrega são restritos a quem recebe. Nenhum sistema é perfeito: se acontecer um incidente que possa te causar risco, eu te aviso e comunico a Autoridade Nacional de Proteção de Dados, como a lei exige.</p>
+
+      <h3><b>7</b>Menores de idade</h3>
+      <p>Os serviços são contratados por maiores de 18 anos. Não peço dados de crianças e adolescentes. Se a sua marca precisar de peças com imagem de menores, a autorização dos responsáveis é sua responsabilidade e deve estar em mãos antes.</p>
+
+      <h3><b>8</b>Mudanças nesta política</h3>
+      <p>Se eu mudar algo aqui, a data no começo deste documento muda também. Mudança relevante é avisada por mensagem a quem tem projeto em andamento.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <a class="marca" href="index.html" aria-label="Ozvo, início"><svg aria-hidden="true"><use href="#simbolo"></use></svg><span>OZVO</span></a>
+    <span><a href="index.html">Voltar ao site</a> · <a href="https://wa.me/5583987682113">WhatsApp</a></span>
+    <span>© 2026 Ozvo. Atendimento por mensagem.</span>
+  </div>
+</footer>
+
+</body>
+</html>
